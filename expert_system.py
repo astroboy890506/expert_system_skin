@@ -32,7 +32,7 @@ def diagnose(symptoms, knowledge_base):
 
 # Streamlit app
 def main():
-    st.title("Medical Diagnosis Expert System")
+    st.title("Skin Disease Diagnosis Expert System")
     
     # Create a list to store selected symptoms
     selected_symptoms = []
@@ -53,8 +53,6 @@ def main():
     # Add an "Enter" button and a "Clear" button to the container side by side
     with buttons_container:
         enter_button = st.button("Enter")
-        st.write("")  # Add an empty space to create separation
-        clear_button = st.button("Clear")
     
     # Add an "Enter" button to show the diagnosis
     if enter_button:
@@ -67,10 +65,6 @@ def main():
                 st.warning("No matching diagnoses found.")
         else:
             st.warning("No symptoms selected.")
-
-    # Clear the selected symptoms when the "Clear" button is clicked
-    if clear_button:
-        selected_symptoms = []
 
 if __name__ == "__main__":
     main()
