@@ -47,13 +47,13 @@ def main():
     
     selected_symptoms = st.multiselect("Select symptoms:", predefined_symptoms)
     
-    # Create a container to arrange buttons side by side
-    buttons_container = st.beta_container()
+    # Create a space for layout adjustment
+    col1, col2 = st.beta_columns(2)
     
-    # Add an "Enter" button and a "Clear" button to the container side by side
-    with buttons_container:
+    # Add an "Enter" button and a "Clear" button to separate columns
+    with col1:
         enter_button = st.button("Enter")
-        st.write("")  # Add an empty space to create separation
+    with col2:
         clear_button = st.button("Clear")
     
     # Add an "Enter" button to show the diagnosis
