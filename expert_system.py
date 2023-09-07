@@ -37,11 +37,23 @@ def main():
     # Create a list to store up to 5 symptoms
     symptoms = []
     
-    # Create input fields for symptoms
-    for i in range(5):
-        symptom = st.text_input(f"Symptom {i+1}", "")
-        if symptom:
-            symptoms.append(symptom)
+    # Create a dropdown list of predefined symptoms
+    predefined_symptoms = [
+        "Pimpled skin", "Blackheads", "Whiteheads", "Inflammation",
+        "Red itchy skin", "Red, scaly patches", "Silvery scales",
+        "Unusual moles", "Changes in existing moles", "Skin lesions",
+        "Bleeding or itching", "Others"
+    ]
+    
+    selected_symptom = st.selectbox("Select a symptom:", predefined_symptoms)
+    
+    # Allow users to enter custom symptoms
+    if selected_symptom == "Others":
+        custom_symptom = st.text_input("Enter custom symptom:", "")
+        if custom_symptom:
+            symptoms.append(custom_symptom)
+    else:
+        symptoms.append(selected_symptom)
     
     # Add a "Clear" button to clear the input
     if st.button("Clear"):
