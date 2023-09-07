@@ -49,7 +49,7 @@ def main():
     
     # Add a "Clear" button to clear the selected symptoms
     if st.button("Clear"):
-        selected_symptoms = []
+        selected_symptoms = []  # Clear selected symptoms when the "Clear" button is clicked
 
     # Add an "Enter" button to show the diagnosis
     if st.button("Enter"):
