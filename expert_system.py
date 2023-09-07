@@ -40,7 +40,7 @@ def main():
     # Create a multiselect widget with predefined symptoms
     predefined_symptoms = [
         "Pimpled skin", "Blackheads", "Whiteheads", "Inflammation",
-        "Red itchy skin", "Red, scaly patches", "Silvery scales",
+        "Red itchy skin", "Scaly patches", "Silvery scales",
         "Unusual moles", "Changes in existing moles", "Skin lesions",
         "Bleeding or itching"
     ]
