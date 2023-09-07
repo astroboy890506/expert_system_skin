@@ -48,16 +48,23 @@ def main():
     selected_symptoms = st.multiselect("Select symptoms:", predefined_symptoms)
     
     # Create a space for layout adjustment
-    col1, col2 = st.beta_columns(2)
+    st.write("")  # Add an empty space for separation
     
-    # Add an "Enter" button and a "Clear" button to separate columns
-    with col1:
-        enter_button = st.button("Enter")
-    with col2:
-        clear_button = st.button("Clear")
-    
-    # Add an "Enter" button to show the diagnosis
-    if enter_button:
+    # Create a container for the "Enter" and "Clear" buttons with custom CSS
+    button_container = st.empty()
+    button_container.markdown(
+        """
+        <style>
+        .st-cc {
+            display: flex;
+            justify-content: space-between;
+        }
+        </style>
+        """
+    )
+
+    # Add an "Enter" button and a "Clear" button to the container
+    if button_container.button("Enter"):
         if selected_symptoms:
             possible_diagnosis = diagnose(selected_symptoms, knowledge_base)
             if possible_diagnosis != "Unknown":
@@ -69,7 +76,7 @@ def main():
             st.warning("No symptoms selected.")
 
     # Clear the selected symptoms when the "Clear" button is clicked
-    if clear_button:
+    if button_container.button("Clear"):
         selected_symptoms = []
 
 if __name__ == "__main__":
