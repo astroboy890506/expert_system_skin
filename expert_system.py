@@ -34,41 +34,33 @@ def diagnose(symptoms, knowledge_base):
 def main():
     st.title("Medical Diagnosis Expert System")
     
-    # Create a list to store up to 5 symptoms
-    symptoms = []
+    # Create a list to store selected symptoms
+    selected_symptoms = []
     
-    # Create a dropdown list of predefined symptoms
+    # Create a multiselect widget with predefined symptoms
     predefined_symptoms = [
         "Pimpled skin", "Blackheads", "Whiteheads", "Inflammation",
         "Red itchy skin", "Red, scaly patches", "Silvery scales",
         "Unusual moles", "Changes in existing moles", "Skin lesions",
-        "Bleeding or itching", "Others"
+        "Bleeding or itching"
     ]
     
-    selected_symptom = st.selectbox("Select a symptom:", predefined_symptoms)
+    selected_symptoms = st.multiselect("Select symptoms:", predefined_symptoms)
     
-    # Allow users to enter custom symptoms
-    if selected_symptom == "Others":
-        custom_symptom = st.text_input("Enter custom symptom:", "")
-        if custom_symptom:
-            symptoms.append(custom_symptom)
-    else:
-        symptoms.append(selected_symptom)
-    
-    # Add a "Clear" button to clear the input
+    # Add a "Clear" button to clear the selected symptoms
     if st.button("Clear"):
-        symptoms = []
+        selected_symptoms = []
 
     # Add an "Enter" button to show the diagnosis
     if st.button("Enter"):
-        if symptoms:
-            possible_diagnosis = diagnose(symptoms, knowledge_base)
+        if selected_symptoms:
+            possible_diagnosis = diagnose(selected_symptoms, knowledge_base)
             if possible_diagnosis != "Unknown":
                 st.success(f"Possible Diagnosis: {possible_diagnosis}")
             else:
                 st.warning("No matching diagnoses found.")
         else:
-            st.warning("No symptoms entered.")
+            st.warning("No symptoms selected.")
 
 if __name__ == "__main__":
     main()
